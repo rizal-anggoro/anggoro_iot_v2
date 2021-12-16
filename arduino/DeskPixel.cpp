@@ -17,3 +17,8 @@ void DeskPixel::test(int r, int g, int b) {
   }
   pixel.show();
 }
+
+void DeskPixel::testByte() {
+  uint32_t color = pixel.Color(255, 255, 255);
+  Serial.println(color);
+}
