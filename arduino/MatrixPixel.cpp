@@ -5,7 +5,7 @@
 
 void MatrixPixel::begin() {
   pixel.begin();
-  pixel.setBrightness(255);
+  pixel.setBrightness(25);
   pixel.clear();
   pixel.show();  
 }
