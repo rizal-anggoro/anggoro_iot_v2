@@ -1,8 +1,10 @@
 #include "DeskPixel.h"
 #include "MatrixPixel.h"
+#include "SegmentData.h"
 
 DeskPixel deskPixel;
 MatrixPixel matrixPixel;
+SegmentData segmentData;
 void setup() {
   Serial.begin(115200);
 
@@ -12,14 +14,18 @@ void setup() {
 //  deskPixel.test(255, 0, 255);
 //  matrixPixel.test(0, 255, 255);
 
-  byte a = B00000000;
-  byte b = B00000111;
-  byte c = B00000101;
-  a = (b << 4) | (c);
-  for (int i = 7; i >= 0; i--) {
-    Serial.print(bitRead(a, i));
-  }
-  Serial.println();
+  String data = "0123";
+  byte a = segmentData.getData(segmentData.getCharIndex(segmentData.getChar(data, 0)), 1);
+  Serial.println(a);
+  
+//  byte a = B00000000;
+//  byte b = B00000111;
+//  byte c = B00000101;
+//  a = (b << 4) | (c);
+//  for (int i = 7; i >= 0; i--) {
+//    Serial.print(bitRead(a, i));
+//  }
+//  Serial.println();
 }
 
 void loop() {
