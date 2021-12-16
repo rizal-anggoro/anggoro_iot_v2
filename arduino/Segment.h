@@ -6,12 +6,13 @@
 class Segment {
   private:
   String segment_chars;
-  byte segment_data[2][5];
+  byte segment_data[11][5];
   
   public:
   String getChar(String c, int i);
   int getCharIndex(String c);
   byte getData(int cIndex, int col);
+  void getBitmapFromData(String data, byte result[11]);
   
   Segment():
   segment_chars("0123456789-"),
