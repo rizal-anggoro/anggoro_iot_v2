@@ -1,20 +1,24 @@
 #include "Wifi.h"
 #include "Ntp.h"
 #include "Communication.h"
+#include "Database.h"
 
 Wifi wifi;
 Ntp ntp;
 Communication communication;
+Database database;
 void setup() {
   Serial.begin(115200);
 
   communication.begin();
   wifi.open();
+  database.begin();
   ntp.begin();
 }
 
 void loop() {
   streamClock();
+  database.stream();
 }
 
 unsigned long previous_millis = 0;
