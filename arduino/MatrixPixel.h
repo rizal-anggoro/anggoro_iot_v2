@@ -13,6 +13,7 @@ class MatrixPixel {
   void begin();
   void test(int r, int g, int b);
   void displayBitmap(byte bitmap[11]);
+  void setBrightness(int value);
 
   MatrixPixel():
   pixel(77, 13, NEO_GRB + NEO_KHZ800),

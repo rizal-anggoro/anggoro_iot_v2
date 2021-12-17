@@ -31,3 +31,8 @@ void MatrixPixel::displayBitmap(byte bitmap[11]) {
   }
   pixel.show();
 }
+
+void MatrixPixel::setBrightness(int value) {
+  pixel.setBrightness(value);
+  pixel.show();
+}
