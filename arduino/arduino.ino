@@ -18,14 +18,13 @@ void setup() {
   matrixPixel.begin();
 
   deskPixel.test(255, 0, 255);
-
-//  String data = "0164";
-//  byte bitmap[11];
-//  segment.getBitmapFromData(data, bitmap);
-//  matrixPixel.displayBitmap(bitmap);
 }
 
 void loop() {
+}
+
+bool contains(String a, String b) {
+  return a.indexOf(b) != -1;
 }
 
 void receiveEvent(int how_many) {
