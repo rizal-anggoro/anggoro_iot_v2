@@ -2,12 +2,14 @@
 #include "MatrixPixel.h"
 #include "Segment.h"
 #include "Communication.h"
+#include "Parser.h"
 
 #include <Wire.h>
 
 DeskPixel deskPixel;
 MatrixPixel matrixPixel;
 Segment segment;
+Parser parser;
 void setup() {
   Serial.begin(115200);
 
@@ -37,6 +39,8 @@ void receiveEvent(int how_many) {
   }
   String receive_data = String(buffer);
   receive_data.trim();
+
+  parser.let(receive_data);
 
   parseSerial(receive_data);
 }
