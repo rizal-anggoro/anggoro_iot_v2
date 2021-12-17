@@ -9,6 +9,7 @@ class DeskPixel {
   void begin();
   void test(int r, int g, int b);
   void testByte();
+  void setBrightness(int value);
 
   DeskPixel():
   pixel(50, 12, NEO_GRB + NEO_KHZ800) {}

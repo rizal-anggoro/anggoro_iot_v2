@@ -22,3 +22,8 @@ void DeskPixel::testByte() {
   uint32_t color = pixel.Color(255, 255, 255);
   Serial.println(color);
 }
+
+void DeskPixel::setBrightness(int value) {
+  pixel.setBrightness(value);
+  pixel.show();
+}
