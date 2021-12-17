@@ -1,6 +1,7 @@
 #include "Parser.h"
 
 extern MatrixPixel matrixPixel;
+extern DeskPixel deskPixel;
 
 void Parser::let(String receive_data) {
   Serial.println(receive_data);
@@ -12,5 +13,7 @@ void Parser::let(String receive_data) {
 
   if (data_path.indexOf("/matrix/brightness") != -1) {
     matrixPixel.setBrightness(data.toInt());
+  } else if (data_path.indexOf("/desk/brightness") != -1) {
+    deskPixel.setBrightness(data.toInt());
   }
 }

@@ -3,7 +3,8 @@
 
 #include <Arduino.h>
 
-#include "MatrixPixel.h"
+#include "MatrixPixel.h"'
+#include "DeskPixel.h"
 
 class Parser {
   private:
