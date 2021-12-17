@@ -23,3 +23,8 @@ void Communication::sendString(String data) {
   }
   Wire.endTransmission();
 }
+
+void Communication::send(String data_path, String data) {
+  String a = data_path + ";" + data;
+  sendString(a);
+}
