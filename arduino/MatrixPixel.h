@@ -2,11 +2,9 @@
 #define MatrixPixel_h
 
 #include <Arduino.h>
-#include <Adafruit_NeoPixel.h>
 
 class MatrixPixel {
   private:
-  Adafruit_NeoPixel pixel;
   int matrixs[11][7];
   
   public:
@@ -16,7 +14,6 @@ class MatrixPixel {
   void setBrightness(int value);
 
   MatrixPixel():
-  pixel(77, 13, NEO_GRB + NEO_KHZ800),
   matrixs({
     { 0, 11, 22, 33, 44, 55, 66 },
     { 1, 12, 23, 34, 45, 56, 67 },
