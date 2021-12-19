@@ -8,8 +8,10 @@ void Communication::begin() {
 }
 
 void Communication::sendString(String data) {
-  Serial.println("void: Communication -> sendString");
-  Serial.println(data);
+  if (data.indexOf("/clock_data") == -1) {
+    Serial.println("void: Communication -> sendString");
+    Serial.println(data);
+  }
   
   data += ";";
   int str_len = data.length() + 1;
