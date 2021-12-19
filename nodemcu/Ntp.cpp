@@ -16,7 +16,7 @@ String Ntp::getHMClock() {
   else s_hours = String(hours);
   
   String s_minutes = "";
-  if (minutes < 10) s_minutes = "-" + String(minutes);
+  if (minutes < 10) s_minutes = "0" + String(minutes);
   else s_minutes = String(minutes);
   
   String clock_data = s_hours + s_minutes;
