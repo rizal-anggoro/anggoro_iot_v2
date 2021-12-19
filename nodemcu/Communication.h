@@ -10,6 +10,7 @@ class Communication {
   void begin();
   void sendString(String data);
   void send(String data_path, String data);
+  void sendJson();
 };
 
 #endif

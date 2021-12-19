@@ -3,8 +3,10 @@
 
 #include <Arduino.h>
 #include <FirebaseESP8266.h>
+#include <ArduinoJson.h>
 
 #include "Communication.h"
+#include "DeskData.h"
 #include "MatrixData.h"
 
 class Database {
@@ -18,12 +20,8 @@ class Database {
 
   String data_path_to_parse;
   String data_to_parse;
-  String parse(String key);
-
-  // matrix
-  String matrix_mode;
-  
-  // desk
+  String parse(String key, String def);
+  void parseJson(String json);
     
   public:
   void begin();

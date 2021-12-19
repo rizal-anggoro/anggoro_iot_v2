@@ -3,6 +3,8 @@
 
 #include <Arduino.h>
 
+#include "Communication.h"
+
 class Wifi {
   private:
   String wifi_ssid;
