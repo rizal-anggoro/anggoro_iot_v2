@@ -23,10 +23,19 @@ void Database::stream() {
     if (firebase_data.streamAvailable()) {
       String data_type = firebase_data.dataType();
       String data_path = firebase_data.dataPath();
-      String data = firebase_data.stringData();
+      String data = String(firebase_data.stringData());
 
       if (data_type != "json") {
+        // remove quote from data
+        data.replace("\"", "");
+
+        // add data path and data to private variable
+        data_path_to_parse = data_path;
+        data_to_parse = data;
         communication.send(data_path, data);
+
+        MatrixData::mode = parse("/matrix/mode");
+        MatrixData::brightness = parse("/matrix/brightness");
       }
 
 //      Serial.println("data type: " + data_type);
@@ -34,4 +43,12 @@ void Database::stream() {
 //      Serial.println("data: " + data);
     }
   }
+}
+
+String Database::parse(String key) {
+  String a = "";
+  if (data_path_to_parse.indexOf(key) != -1) {
+    a = data_to_parse;
+  }
+  return a;
 }

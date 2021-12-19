@@ -5,6 +5,7 @@
 #include <FirebaseESP8266.h>
 
 #include "Communication.h"
+#include "MatrixData.h"
 
 class Database {
   private:
@@ -14,6 +15,15 @@ class Database {
   FirebaseAuth firebase_auth;
   FirebaseConfig firebase_config;
   Communication communication;
+
+  String data_path_to_parse;
+  String data_to_parse;
+  String parse(String key);
+
+  // matrix
+  String matrix_mode;
+  
+  // desk
     
   public:
   void begin();
