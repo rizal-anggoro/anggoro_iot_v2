@@ -61,11 +61,10 @@ void setup() {
   
   desk_pixel.show();
   matrix_pixel.show();
-
-  deskTest();
 }
 
 void loop() {
+  parseDesk();
 }
 
 void receiveEvent(int how_many) {

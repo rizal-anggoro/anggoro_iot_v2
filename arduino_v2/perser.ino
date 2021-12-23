@@ -40,4 +40,9 @@ void parser(String receive_data) {
   } else if (path == "/desk/static/blue") {
     desk_static_blue = data;
   }
+
+  // refresh desk pixel
+  if (path.indexOf("/desk") != -1) {
+    _desk_current_mode = "";
+  }
 }
