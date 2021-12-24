@@ -26,7 +26,7 @@ const uint8_t matrix_pins[11][7] = {
   {10, 21, 32, 43, 54, 65, 76 },
 };
 
-String desk_mode = "off";
+String desk_mode = "static";
 String desk_brightness = "50";
 String desk_static = "100;0;;255";          // red, green, blue
 String desk_breathing = "100;0;;255;;;10";  // red, green, blue, interval
