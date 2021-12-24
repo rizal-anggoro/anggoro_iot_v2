@@ -12,6 +12,11 @@ void parseDesk() {
     _desk_static();
   }
 
+  // mode -> breathing
+  else if (desk_mode == "breathing") {
+    _desk_breathing();
+  }
+
   // mode -> rainbow
   else if (desk_mode == "rainbow") {
     _desk_rainbow();
@@ -19,9 +24,11 @@ void parseDesk() {
 }
 
 void _desk_brightness() {
-  if (desk_pixel.getBrightness() != desk_brightness.toInt()) {
-    desk_pixel.setBrightness(desk_brightness.toInt());
-    desk_pixel.show();
+  if (desk_mode != "breathing") {
+    if (desk_pixel.getBrightness() != desk_brightness.toInt()) {
+      desk_pixel.setBrightness(desk_brightness.toInt());
+      desk_pixel.show();
+    }
   }
 }
 
@@ -40,6 +47,55 @@ void _desk_static() {
       red.toInt(), green.toInt(), blue.toInt()
     ), 0, 50);
     desk_pixel.show();
+  }
+}
+
+unsigned long _desk_breathing_previous_millis = 0;
+int _desk_breathing_state = -1;
+void _desk_breathing() {
+  String a = desk_breathing;
+  String interval = a.substring(a.indexOf(";;;") + 3, a.length());
+
+  if (_desk_breathing_state == -1) {
+    Serial.println("reset breathing: called");
+
+    desk_pixel.setBrightness(0);
+    desk_pixel.show();
+    
+    _desk_breathing_state = 0;
+  }
+  
+  unsigned long current_millis = millis();
+  if (current_millis - _desk_breathing_previous_millis >= interval.toInt()) {
+    _desk_breathing_previous_millis = current_millis;
+    
+    String red = a.substring(0, a.indexOf(";"));
+    String green = a.substring(a.indexOf(";") + 1, a.indexOf(";;"));
+    String blue = a.substring(a.indexOf(";;") + 2, a.indexOf(";;;"));
+
+    desk_pixel.clear();
+    desk_pixel.fill(desk_pixel.Color(
+      red.toInt(), green.toInt(), blue.toInt()
+    ), 0, 50);
+    
+    int brightness = desk_pixel.getBrightness();
+    if (_desk_breathing_state == 0) {
+      // state up
+      if (brightness < desk_brightness.toInt()) {
+        desk_pixel.setBrightness((brightness + 1));
+        desk_pixel.show();
+      } else if (brightness >= desk_brightness.toInt()) {
+        _desk_breathing_state = 1;
+      }
+    } else if (_desk_breathing_state == 1) {
+      // state down
+      if (brightness > 0) {
+        desk_pixel.setBrightness((brightness - 1));
+        desk_pixel.show();
+      } else if (brightness == 0) {
+        _desk_breathing_state = 0;
+      }
+    }
   }
 }
 
